@@ -3,8 +3,12 @@ require 'json'
 
 class AddressesController < ApplicationController
 
+  def new_location
+    @new_location = params[:new_location]
+  end
+
   def fetch_coordinates
-    @address = "the corner of Foster and Sheridan"
+    @address = params[:new_location]
     @url_safe_address = URI.encode(@address)
 
     #Your code goes here.
@@ -14,4 +18,8 @@ class AddressesController < ApplicationController
     @latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]
     @longitude = parsed_data["results"][0]["geometry"]["location"]["lng"]
   end
+
+  
+
+
 end
